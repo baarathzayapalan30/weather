@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Now | Weather Forecast</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- Header -->
+    <header class="topbar">
+
+        <a class="brand" href="#">
+            <img src="assets/images/logo.svg" alt="Weather Logo">
+            <span>Weather Now</span>
+        </a>
+
+        <div class="unit-wrap">
+
+            <button class="unit-button" id="unitButton">
+                <img src="assets/images/icon-units.svg" alt="">
+                Units
+                <img src="assets/images/icon-dropdown.svg" alt="">
+            </button>
+
+            <div class="unit-menu" id="unitMenu" hidden>
+
+                <p class="menu-title">Temperature</p>
+
+                <label>
+                    <input type="radio" name="temperature" value="celsius" checked>
+                    Celsius (°C)
+                </label>
+
+                <label>
+                    <input type="radio" name="temperature" value="fahrenheit">
+                    Fahrenheit (°F)
+                </label>
+
+                <hr>
+
+                <p class="menu-title">Wind Speed</p>
+
+                <label>
+                    <input type="radio" name="wind" value="kmh" checked>
+                    km/h
+                </label>
+
+                <label>
+                    <input type="radio" name="wind" value="mph">
+                    mph
+                </label>
+
+                <hr>
+
+                <p class="menu-title">Precipitation</p>
+
+                <label>
+                    <input type="radio" name="precipitation" value="mm" checked>
+                    Millimeters (mm)
+                </label>
+
+                <label>
+                    <input type="radio" name="precipitation" value="inch">
+                    Inches (in)
+                </label>
+
+                <button class="apply-button" id="applyUnits">
+                    Apply Changes
+                </button>
+
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Main Heading -->
+    <h1>How's the sky looking today?</h1>
+
+    <!-- Search Section -->
+    <form class="search-form" id="searchForm">
+
+        <label class="search-field" for="cityInput">
+
+            <img src="assets/images/icon-search.svg" alt="">
+
+            <input
+                type="search"
+                id="cityInput"
+                placeholder="Search for a city, e.g., New York"
+                required
+            >
+
+        </label>
+
+        <button type="submit" id="searchButton">
+            Search
+        </button>
+
+    </form>
+
+    <p class="message" id="message">
+        Loading weather...
+    </p>
+
+    <!-- Weather Content -->
+    <section class="weather-layout" id="weatherContent" hidden>
+
+        <div class="main-column">
+
+            <!-- Current Weather -->
+            <section class="current-weather">
+
+                <div class="current-copy">
+
+                    <h2 id="locationName">Puducherry</h2>
+
+                    <p id="currentDate">Today</p>
+
+                </div>
+
+                <img
+                    class="current-icon"
+                    id="currentIcon"
+                    src="assets/images/icon-sunny.webp"
+                    alt="Weather"
+                >
+
+                <div class="current-temp" id="currentTemp">
+                    --°
+                </div>
+
+            </section>
+
+            <!-- Weather Details -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <h3>Feels Like</h3>
+                    <p id="feelsLike">--°</p>
+                </article>
+
+                <article class="stat-card">
+                    <h3>Humidity</h3>
+                    <p id="humidity">--%</p>
+                </article>
+
+                <article class="stat-card">
+                    <h3>Wind</h3>
+                    <p id="wind">-- km/h</p>
+                </article>
+
+                <article class="stat-card">
+                    <h3>Precipitation</h3>
+                    <p id="precipitation">-- mm</p>
+                </article>
+
+            </section>
+
+            <!-- Daily Forecast -->
+            <section class="daily-section">
+
+                <h2>7-Day Forecast</h2>
+
+                <div class="daily-grid" id="dailyForecast">
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Hourly Forecast -->
+        <aside class="hourly-panel">
+
+            <div class="hourly-heading">
+
+                <h2>Hourly Forecast</h2>
+
+                <select id="daySelect" aria-label="Select forecast day">
+                </select>
+
+            </div>
+
+            <div class="hourly-list" id="hourlyForecast">
+            </div>
+
+        </aside>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        Weather data provided by
+        <a href="https://open-meteo.com/" target="_blank">
+            Open-Meteo
+        </a>.
+    </footer>
+
+</main>
+
+</body>
+</html>

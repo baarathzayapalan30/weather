@@ -1,0 +1,584 @@
+/* =========================
+   1. FONT SETTINGS
+========================= */
+
+@font-face {
+    font-family: "DM Sans";
+    src: url("assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+    font-family: "Bricolage";
+    src: url("assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf");
+}
+
+/* =========================
+   2. GLOBAL SETTINGS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #030323;
+    color: #f5f5ff;
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+.app {
+    width: min(1226px, calc(100% - 48px));
+    margin: auto;
+    padding: 42px 0 24px;
+}
+
+/* =========================
+   3. HEADER
+========================= */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #f8f8ff;
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+}
+
+.unit-wrap {
+    position: relative;
+}
+
+.unit-button {
+    border: 0;
+    border-radius: 10px;
+    background: #25253f;
+    color: #fff;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.unit-button img {
+    width: 17px;
+}
+
+/* =========================
+   4. UNIT DROPDOWN
+========================= */
+
+.unit-menu {
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    top: 52px;
+    width: 245px;
+    background: #25253f;
+    border: 1px solid #41415d;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 12px 35px #0007;
+}
+
+.unit-menu[hidden] {
+    display: none;
+}
+
+.menu-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #aaaac0;
+    margin: 4px 0 10px;
+}
+
+.unit-menu label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.unit-menu input {
+    accent-color: #5965e9;
+}
+
+.unit-menu hr {
+    border: 0;
+    border-top: 1px solid #41415d;
+    margin: 10px 0;
+}
+
+.apply-button {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    background: #4c5fe8;
+    color: white;
+    padding: 11px;
+    margin-top: 12px;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* =========================
+   5. MAIN HEADING
+========================= */
+
+h1 {
+    font-family: Bricolage, Arial, sans-serif;
+    text-align: center;
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 62px 0 60px;
+}
+
+/* =========================
+   6. SEARCH BAR
+========================= */
+
+.search-form {
+    display: flex;
+    gap: 16px;
+    width: min(690px, 100%);
+    margin: 0 auto;
+}
+
+.search-field {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #25253f;
+    border-radius: 11px;
+    padding: 0 20px;
+    flex: 1;
+    min-width: 0;
+}
+
+.search-field img {
+    width: 19px;
+    opacity: .85;
+}
+
+.search-field input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+}
+
+.search-field input::placeholder {
+    color: #b6b6c7;
+}
+
+.search-form > button {
+    background: #4d60e9;
+    color: white;
+    border: 0;
+    border-radius: 11px;
+    padding: 0 25px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.search-form > button:hover,
+.apply-button:hover {
+    background: #6878f5;
+}
+
+.message {
+    text-align: center;
+    color: #aaaac0;
+    min-height: 22px;
+    margin: 14px 0 28px;
+    font-size: 14px;
+}
+
+/* =========================
+   7. WEATHER LAYOUT
+========================= */
+
+.weather-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(320px, .96fr);
+    gap: 30px;
+}
+
+.weather-layout[hidden] {
+    display: none;
+}
+
+.main-column {
+    min-width: 0;
+}
+
+/* =========================
+   8. CURRENT WEATHER CARD
+========================= */
+
+.current-weather {
+    min-height: 272px;
+    border-radius: 20px;
+    background: #4843c9 url("assets/images/bg-today-large.svg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 30px 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.current-copy {
+    z-index: 1;
+}
+
+.current-copy h2 {
+    font-size: 25px;
+    margin: 0 0 8px;
+}
+
+.current-copy p {
+    margin: 0;
+    color: #e1e1ff;
+}
+
+.current-icon {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.current-temp {
+    font-family: Bricolage, Arial, sans-serif;
+    font-size: clamp(65px, 8vw, 90px);
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* =========================
+   9. WEATHER DETAILS
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.stat-card {
+    background: #25253f;
+    border: 1px solid #41415d;
+    border-radius: 12px;
+    padding: 17px 18px;
+    min-height: 112px;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #c2c2d0;
+    margin: 0 0 15px;
+}
+
+.stat-card p {
+    font-family: Bricolage, Arial, sans-serif;
+    font-size: 29px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* =========================
+   10. 7-DAY FORECAST
+========================= */
+
+.daily-section {
+    margin-top: 44px;
+}
+
+.daily-section h2,
+.hourly-heading h2 {
+    font-size: 18px;
+    margin: 0 0 18px;
+}
+
+.daily-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.day-card {
+    background: #25253f;
+    border: 1px solid #41415d;
+    border-radius: 12px;
+    text-align: center;
+    padding: 13px 7px;
+    min-width: 0;
+}
+
+.day-card .day-name {
+    font-size: 14px;
+}
+
+.day-card img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    margin: 13px auto;
+}
+
+.temps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    gap: 4px;
+}
+
+.temps span:last-child {
+    color: #b5b5c8;
+}
+
+/* =========================
+   11. HOURLY FORECAST
+========================= */
+
+.hourly-panel {
+    background: #25253f;
+    border-radius: 20px;
+    padding: 24px;
+    min-width: 0;
+}
+
+.hourly-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.hourly-heading h2 {
+    margin: 0;
+}
+
+.hourly-heading select {
+    background: #41415d;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font: inherit;
+    max-width: 125px;
+}
+
+.hourly-list {
+    display: grid;
+    gap: 12px;
+    max-height: 590px;
+    overflow: auto;
+    padding-right: 2px;
+}
+
+.hour-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #30304b;
+    border: 1px solid #454560;
+    border-radius: 10px;
+    padding: 10px 14px;
+    min-height: 58px;
+}
+
+.hour-card img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.hour-card .hour {
+    font-size: 16px;
+}
+
+.hour-card .hour-temp {
+    margin-left: auto;
+    font-size: 15px;
+}
+
+/* =========================
+   12. FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    color: #85859e;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+footer a {
+    color: #bfc4ff;
+}
+
+/* =========================
+   13. TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .weather-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hourly-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-height: none;
+    }
+
+    .stats-grid {
+        gap: 12px;
+    }
+
+    .daily-grid {
+        gap: 8px;
+    }
+}
+
+/* =========================
+   14. MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 620px) {
+
+    .app {
+        width: calc(100% - 32px);
+        padding-top: 25px;
+    }
+
+    .brand {
+        font-size: 18px;
+    }
+
+    .brand img {
+        width: 32px;
+        height: 32px;
+    }
+
+    h1 {
+        margin: 45px 0 30px;
+        font-size: 34px;
+    }
+
+    .search-form {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .search-field {
+        flex: none;
+        width: 100%;
+    }
+
+    .search-form > button {
+        height: 50px;
+    }
+
+    .message {
+        margin-bottom: 20px;
+    }
+
+    .current-weather {
+        min-height: 235px;
+        padding: 24px 18px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .current-copy {
+        width: 100%;
+    }
+
+    .current-copy h2 {
+        font-size: 21px;
+    }
+
+    .current-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 0 0;
+    }
+
+    .current-temp {
+        font-size: 65px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .stat-card {
+        min-height: 105px;
+        padding: 14px;
+    }
+
+    .stat-card p {
+        font-size: 26px;
+    }
+
+    .daily-section {
+        margin-top: 32px;
+    }
+
+    .daily-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 9px;
+    }
+
+    .day-card {
+        padding: 12px 7px;
+    }
+
+    .hourly-panel {
+        padding: 18px;
+    }
+
+    .hourly-list {
+        grid-template-columns: 1fr;
+    }
+
+    .unit-menu {
+        right: 0;
+    }
+
+    .hourly-heading h2 {
+        font-size: 16px;
+    }
+}
